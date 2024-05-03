@@ -26,7 +26,7 @@ const Home = () => {
             onClick={handleShowCategory}
             className="block md:hidden  btn btn-info ms-auto"
           >
-            Show Category
+            {showCategory ? "Hide" : "Show"} Category
           </button>
           <div className={`${showCategory ? "block" : "hidden"} md:block`}>
             <LeftNavbar handleNewsCategory={handleNewsCategory}></LeftNavbar>
