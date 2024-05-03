@@ -1,0 +1,17 @@
+.CATEGORY-CONTAINER a {
+  background: none;
+  transition: all ease 0.3s;
+}
+
+.CATEGORY-CONTAINER a:active {
+  background: black;
+  transform: scale(0.9);
+}
+.CATEGORY-CONTAINER a:hover {
+  background: #d72050;
+  border-left: 8px solid black;
+}
+.CATEGORY-CONTAINER .active {
+  background: #d72050;
+  border-left: 8px solid black;
+}

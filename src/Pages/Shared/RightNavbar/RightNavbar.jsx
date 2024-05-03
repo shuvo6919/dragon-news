@@ -8,23 +8,54 @@ import qZone1 from "../../../../src/assets/images/qZone1.png";
 import qZone2 from "../../../../src/assets/images/qZone2.png";
 import qZone3 from "../../../../src/assets/images/qZone3.png";
 import addBG from "../../../../src/assets/images/bg.png";
+import { useContext } from "react";
+import { AuthContext } from "../../../Providers/AuthProvider";
 
 const RightNavbar = () => {
+  const { googleLogin, gitHubLogin } = useContext(AuthContext);
+  const handleGoogleLogin = () => {
+    console.log("clicked");
+    googleLogin()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err.code);
+      });
+  };
+  const handleGitHubLogin = () => {
+    gitHubLogin()
+      .then((result) => {
+        console.log(result.user);
+      })
+      .catch((err) => {
+        console.log(err.code);
+      });
+  };
   return (
     <div>
       <h1 className="text-xl font-semibold">Login With</h1>
       <div className="mt-4 space-y-2">
-        <button className="btn btn-outline btn-info w-full ">
+        <button
+          onClick={handleGoogleLogin}
+          className="btn btn-outline btn-info w-full "
+        >
           <FaGoogle /> Login With Google
         </button>
-        <button className="btn btn-outline btn-info w-full">
+        <button
+          onClick={handleGitHubLogin}
+          className="btn btn-outline btn-info w-full"
+        >
           <FaGithub />
           Login With GitHub
         </button>
       </div>
       <h1 className="text-xl font-semibold mt-8">Find Us On</h1>
       <div className="mt-4">
-        <Link className="flex items-center border  p-3 rounded-t-lg">
+        <Link
+          to={"https://www.facebook.com/shuvo6919"}
+          className="flex items-center border  p-3 rounded-t-lg"
+        >
           <FaFacebook className="me-2 text-lg" />
           Facebook
         </Link>

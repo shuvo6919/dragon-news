@@ -1,25 +1,33 @@
 import { useEffect, useState } from "react";
-import { NavLink } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
+import "./leftNavbar.css";
 
-const LeftNavbar = () => {
+const LeftNavbar = ({ handleNewsCategory }) => {
   const [categories, setCategories] = useState([]);
   const [newses, setNewses] = useState([]);
   useEffect(() => {
-    fetch("news.json")
+    fetch("../news.json")
       .then((res) => res.json())
       .then((data) => setNewses(data));
   }, []);
   useEffect(() => {
-    fetch("categories.json")
+    fetch("../categories.json")
       .then((res) => res.json())
       .then((data) => setCategories(data));
   }, []);
+  console.log(categories);
+  console.log(newses);
   return (
     <div>
       <h1 className="text-xl font-semibold">All Categories</h1>
-      <div className="flex flex-col gap-4 mt-3 ms-8 CATEGORY-CONTAINER">
+      <div className="flex flex-col  mt-3  CATEGORY-CONTAINER">
         {categories.map((category) => (
-          <NavLink className="text-xl" key={category.id}>
+          <NavLink
+            to={`/category/${category.id}`}
+            onClick={() => handleNewsCategory(category.id)}
+            className="text-xl ps-6 py-3 "
+            key={category.id}
+          >
             {category.name}
           </NavLink>
         ))}

@@ -60,7 +60,10 @@ const Navbar = () => {
           className="btn btn-ghost btn-circle avatar"
         >
           <div className="w-10 rounded-full">
-            <img alt="Tailwind CSS Navbar component" src={userDefaultProfile} />
+            <img
+              alt="Tailwind CSS Navbar component"
+              src={user ? user.photoURL : userDefaultProfile}
+            />
           </div>
         </div>
         {user ? (
